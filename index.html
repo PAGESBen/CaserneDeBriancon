@@ -29,7 +29,7 @@
                 max-height: 400px;
             }
         }
-        /* New primary color for KPI cards */
+        /* Nouvelle couleur principale pour les cartes KPI */
         .kpi-card {
             background-color: #47658c;
             color: white;
@@ -40,7 +40,7 @@
             line-height: 1;
             color: #FFA600;
         }
-        /* New primary color for section titles */
+        /* Nouvelle couleur principale pour les titres de section */
         .section-title {
             color: #47658c;
         }
@@ -54,16 +54,77 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
-        /* New primary color for the Cinq Mondes logo border */
+        /* Nouvelle couleur principale pour la bordure du logo Cinq Mondes */
         .cinq-mondes-logo-container {
             border: 2px solid #47658c;
             border-radius: 9999px; /* rounded-full equivalent */
             padding: 0.5rem; /* p-2 equivalent */
             background-color: #E5E7EB; /* bg-gray-200 equivalent */
         }
-        /* Rule to constrain content to a max width and center it */
+        /* Règle pour contraindre le contenu à une largeur maximale et le centrer */
         .content-max-width {
             max-width: 1010px;
+        }
+        
+        /* Styles pour le carrousel d'images */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .carousel-image {
+            width: 100%;
+            height: auto;
+            display: none; /* Cache les images par défaut */
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .carousel-image.active {
+            display: block; /* Affiche l'image active */
+            opacity: 1;
+        }
+        .carousel-button {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 1rem;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .carousel-button:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .dot.active {
+            background-color: #717171;
         }
     </style>
 </head>
@@ -276,6 +337,47 @@
                 </div>
             </section>
         </div>
+        
+        <!-- Nouvelle section pour le carrousel d'images -->
+        <section id="image-carousel" class="mt-12">
+            <h3 class="text-2xl font-bold mb-4 section-title text-center">Galerie Photos</h3>
+            <div class="carousel-container">
+                <!-- Les images du carrousel -->
+                <img src="./img/Façade principale.jpg" class="carousel-image" alt="Image de la façade de l'hôtel">
+                <img src="./img/Façade et parking.jpg" class="carousel-image" alt="Image de la façade et du parking">
+                <img src="./img/Lobby.jpg" class="carousel-image" alt="Image du Lobby">
+                <img src="./img/Réception.jpg" class="carousel-image" alt="Image de la réception de l'hôtel">
+                <img src="./img/Restaurant.jpg" class="carousel-image" alt="Image du restaurant de l'hôtel">
+                <img src="./img/Restaurant (2).jpg" class="carousel-image" alt="Image du restaurant de l'hôtel">
+                <img src="./img/Bar.jpg" class="carousel-image" alt="Image du bar de l'hôtel">
+                <img src="./img/Accueil spa.jpg" class="carousel-image" alt="Image de la réception du Spa 5 mondes">
+                <img src="./img/Chambre confort double (2).jpg" class="carousel-image" alt="Image de la chambre confort double">
+                <img src="./img/Chambre confort double.jpg" class="carousel-image" alt="Image de la chambre confort double">
+                <img src="./img/Chambre confort Twin.jpg" class="carousel-image" alt="Image de la chambre confort twin">
+                <img src="./img/Salle de réunion _ MICE.jpg" class="carousel-image" alt="Image de l'espace réunion / MICE">
+                <img src="./img/Espace lounge _ MICE.jpg" class="carousel-image" alt="Image de l'espace lounge sous les toits">
+
+                <!-- Boutons de navigation -->
+                <a class="carousel-button prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="carousel-button next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div style="text-align:center" class="mt-4">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
+                <span class="dot" onclick="currentSlide(10)"></span>
+                <span class="dot" onclick="currentSlide(11)"></span>
+                <span class="dot" onclick="currentSlide(12)"></span>
+                <span class="dot" onclick="currentSlide(13)"></span>
+            </div>
+        </section>
+
     </main>
 
     <footer class="mt-12 p-6 bg-gray-800 text-white text-center">
@@ -308,6 +410,50 @@
             red: '#FF6361',
             orange: '#FFA600'
         };
+        
+        // Logique du carrousel d'images
+        let slideIndex = 1;
+        
+        // Fonction pour afficher la diapositive actuelle
+        function showSlides(n) {
+            let i;
+            // Sélectionnez tous les éléments d'image
+            let images = document.getElementsByClassName("carousel-image");
+            let dots = document.getElementsByClassName("dot");
+            
+            // Ajustez l'index pour boucler si nécessaire
+            if (n > images.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = images.length }
+            
+            // Masquez toutes les images en retirant la classe 'active'
+            for (i = 0; i < images.length; i++) {
+                images[i].classList.remove("active");
+            }
+            
+            // Retirez la classe 'active' de tous les points
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            // Affichez l'image et le point de la diapositive actuelle en ajoutant la classe 'active'
+            images[slideIndex - 1].classList.add("active");
+            dots[slideIndex - 1].classList.add("active");
+        }
+        
+        // Fonction pour avancer/reculer dans le carrousel
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        
+        // Fonction pour passer directement à une diapositive spécifique
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            // Affichez la première image au chargement de la page
+            showSlides(slideIndex);
+        });
     </script>
 
 </body>
